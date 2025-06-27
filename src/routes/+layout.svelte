@@ -1,5 +1,7 @@
 <script lang="ts">
 	import '../app.css';
+	import { onMount } from 'svelte';
+	import { initScrollAnimations } from '$lib/animations';
 
 	let { children } = $props();
 	let mobileMenuOpen = $state(false);
@@ -8,60 +10,64 @@
 		mobileMenuOpen = !mobileMenuOpen;
 		console.log('Mobile menu toggled:', mobileMenuOpen);
 	}
+
+	onMount(() => {
+		initScrollAnimations();
+	});
 </script>
 
 <!-- Navigation Header -->
-<nav class="bg-transparent fixed w-full px-4 lg:px-auto top-0 py-3 z-50">
-	<div class="bg-white shadow rounded-4xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="bg-transparent fixed w-full px-4 lg:px-auto top-0 py-3 z-50 animate-slide-down">
+	<div class="bg-white shadow rounded-4xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hover-lift">
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
-			<div class="flex items-center">
-					<a href="./" class="flex-shrink-0 flex items-center">
-						<div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+			<div class="flex items-center animate-fade-in-left">
+					<a href="./" class="flex-shrink-0 flex items-center hover-scale">
+						<div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center animate-pulse-glow">
 						<span class="text-white font-bold text-sm">NC</span>
 					</div>
-					<span class="ml-2 text-xl font-semibold text-gray-900">NanCare</span>
+					<span class="ml-2 text-xl font-semibold text-gray-900 gradient-text">NanCare</span>
 					</a>
 			</div>
 
 			<!-- Desktop Navigation Links -->
-			<div class="hidden md:block">
+			<div class="hidden md:block animate-fade-in">
 				<div class="ml-10 flex items-baseline space-x-8">
-					<a href="/services" class="text-gray-900 hover:text-orange-500 px-3 py-2 text-sm font-medium">
+					<a href="/services" class="text-gray-900 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-all duration-300 hover-glow stagger-1 rounded-full">
 						Our Services
 					</a>
-					<a href="/about" class="text-gray-900 hover:text-orange-500 px-3 py-2 text-sm font-medium">
+					<a href="/about" class="text-gray-900 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-all duration-300 hover-glow stagger-2 rounded-full">
 						About Us
 					</a>
-					<a href="/testimonials" class="text-gray-900 hover:text-orange-500 px-3 py-2 text-sm font-medium flex items-center">
+					<a href="/testimonials" class="text-gray-900 hover:text-orange-500 px-3 py-2 text-sm font-medium flex items-center transition-all duration-300 hover-glow stagger-3 rounded-full">
 						Testimonials
-						<span class="ml-1 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+						<span class="ml-1 bg-orange-500 text-white text-xs px-2 py-1 rounded-full animate-float">3</span>
 					</a>
 				</div>
 			</div>
 
 			<!-- Desktop Contact Button -->
-			<div class="hidden md:flex items-center">
-				<a href="/contact" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+			<div class="hidden md:flex items-center animate-fade-in-right">
+				<a href="/contact" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-medium btn-animate hover-lift">
 					Contact Us
 				</a>
 			</div>
 
 			<!-- Mobile Hamburger Menu -->
-			<div class="md:hidden flex items-center">
+			<div class="md:hidden flex items-center animate-fade-in-right">
 				<button 
-					on:click={toggleMobileMenu}
-					class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
+					onclick={toggleMobileMenu}
+					class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500 transition-all duration-300"
 				>
 					<span class="sr-only">Open main menu</span>
 					{#if !mobileMenuOpen}
 						<!-- Hamburger icon -->
-						<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+						<svg class="h-6 w-6 transition-transform duration-300" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 						</svg>
 					{:else}
 						<!-- Close icon -->
-						<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+						<svg class="h-6 w-6 transition-transform duration-300 rotate-180" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 						</svg>
 					{/if}
@@ -72,22 +78,22 @@
 
 	<!-- Mobile Menu -->
 	{#if mobileMenuOpen}
-		<div class="md:hidden absolute top-full left-4 right-4 bg-white border border-gray-200 rounded-lg shadow-lg z-50 mt-1">
+		<div class="md:hidden absolute top-full left-4 right-4 bg-white border border-gray-200 rounded-lg shadow-lg z-50 mt-1 animate-slide-down">
 			<div class="px-4 pt-2 pb-3 space-y-1">
-				<a href="/services" class="text-gray-900 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+				<a href="/services" class="text-gray-900 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 animate-fade-in stagger-1">
 					Our Services
 				</a>
-				<a href="/about" class="text-gray-900 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+				<a href="/about" class="text-gray-900 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 animate-fade-in stagger-2">
 					About Us
 				</a>
-				<a href="/testimonials" class="text-gray-900 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+				<a href="/testimonials" class="text-gray-900 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 animate-fade-in stagger-3">
 					<div class="flex items-center">
 						Testimonials
-						<span class="ml-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">9</span>
+						<span class="ml-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full animate-float">9</span>
 					</div>
 				</a>
-				<div class="pt-2">
-					<a href="/contact" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 block text-center">
+				<div class="pt-2 animate-fade-in stagger-4">
+					<a href="/contact" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-base font-medium btn-animate block text-center">
 						Contact Us
 					</a>
 				</div>

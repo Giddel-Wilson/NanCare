@@ -47,32 +47,37 @@
 		currentTestimonial = index;
 	}
 
-	// Auto-play slider
+	// Auto-play slider and animations
 	import { onMount } from 'svelte';
+	import { reinitializeAnimations } from '$lib/animations';
 	
 	onMount(() => {
+		// Re-initialize animations for this page
+		reinitializeAnimations();
+		
+		// Auto-play testimonials
 		const interval = setInterval(nextTestimonial, 5000); // Change every 5 seconds
 		return () => clearInterval(interval);
 	});
 </script>
 
 <!-- Hero Section -->
-<section class="bg-gray-50 py-20">
+<section class="bg-gray-50 py-20 fade-in-on-scroll">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center">
-			<h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+			<h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in">
 				Supporting<br>
-				Seniors Everywhere
+				<span class="gradient-text">Seniors Everywhere</span>
 			</h1>
-			<p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+			<p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-in stagger-1">
 				A dedicated welfare and support organization helping families, NGOs, government agencies, and volunteers improve the quality of life for seniors.
 			</p>
 			
 			<!-- User Avatars -->
-			<div class="flex flex-col md:flex-row justify-center items-center mb-8">
+			<div class="flex flex-col md:flex-row justify-center items-center mb-8 animate-fade-in stagger-2">
 				<div class="flex -space-x-2">
 					{#each userAvatars as avatar, i}
-						<img src={avatar} alt="User {i + 1}" class="w-12 h-12 rounded-full border-2 border-white">
+						<img src={avatar} alt="User {i + 1}" class="w-12 h-12 rounded-full border-2 border-white hover-scale transition-all duration-300 stagger-{i + 1}">
 					{/each}
 				</div>
 				<p class="ml-4 text-sm text-gray-600">
@@ -80,7 +85,7 @@
 				</p>
 			</div>
 			
-			<button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors duration-200 mb-12">
+			<button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg text-lg font-medium btn-animate hover-lift animate-fade-in stagger-3 mb-12">
 				Get Support
 			</button>
 		</div>
@@ -88,16 +93,16 @@
 </section>
 
 <!-- Dashboard Section -->
-<section class="py-20 bg-white shadow md:rounded-2xl">
+<section class="py-20 bg-white shadow md:rounded-2xl fade-in-on-scroll">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<!-- Left Side - Dashboard Preview -->
-			<div class="relative">
+			<div class="relative animate-fade-in-left">
 				<!-- Desktop Dashboard -->
-				<div class="bg-gray-900 rounded-lg p-6 shadow-2xl">
+				<div class="bg-gray-900 rounded-lg p-6 shadow-2xl hover-lift">
 					<div class="bg-gray-800 rounded-lg p-4">
 						<div class="flex items-center justify-between mb-6">
-							<h3 class="text-white text-lg font-semibold">Good evening</h3>
+							<h3 class="text-white text-lg font-semibold animate-fade-in stagger-1">Good evening</h3>
 							<div class="flex space-x-2">
 								<div class="w-3 h-3 bg-green-400 rounded-full"></div>
 								<div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -149,58 +154,57 @@
 			</div>
 
 			<!-- Right Side - Content -->
-			<div>
-				<h2 class="text-4xl font-bold text-gray-900 mb-6">About</h2>
-				<p class="text-gray-600 mb-6">
+			<div class="animate-fade-in-right">
+				<h2 class="text-4xl font-bold text-gray-900 mb-6 animate-fade-in">About</h2>
+				<p class="text-gray-600 mb-6 animate-fade-in stagger-1">
 					NanCare is a welfare and support-focused organization dedicated to improving the quality of life for seniors. We build awareness, trust, and provide accessible support for families, care institutions, and government agencies working together in elderly care.
 				</p>
 				<div class="space-y-4 mb-8">
-					<div class="flex items-center">
-						<div class="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+					<div class="flex items-center animate-fade-in stagger-2 hover-scale">
+						<div class="w-2 h-2 bg-orange-500 rounded-full mr-3 animate-pulse-glow"></div>
 						<span class="text-gray-700">Wellness Support</span>
 					</div>
-					<div class="flex items-center">
-						<div class="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+					<div class="flex items-center animate-fade-in stagger-3 hover-scale">
+						<div class="w-2 h-2 bg-orange-500 rounded-full mr-3 animate-pulse-glow"></div>
 						<span class="text-gray-700">Family Counseling</span>
 					</div>
-					<div class="flex items-center">
-						<div class="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+					<div class="flex items-center animate-fade-in stagger-4 hover-scale">
+						<div class="w-2 h-2 bg-orange-500 rounded-full mr-3 animate-pulse-glow"></div>
 						<span class="text-gray-700">Care Coordination</span>
 					</div>
 				</div>
 
-				<h3 class="text-lg font-semibold text-gray-900 mb-4">Serving:</h3>
-				<div class="flex items-center space-x-4 mb-8">
+				<h3 class="text-lg font-semibold text-gray-900 mb-4 animate-fade-in stagger-5">Serving:</h3>
+				<div class="flex items-center space-x-4 mb-8 animate-fade-in stagger-6">
 					<div class="flex -space-x-2">
 						{#each userAvatars as avatar, i}
-							<img src={avatar} alt="User {i + 1}" class="w-8 h-8 rounded-full border-2 border-white">
+							<img src={avatar} alt="User {i + 1}" class="w-8 h-8 rounded-full border-2 border-white hover-scale transition-all duration-300">
 						{/each}
 					</div>
 					<span class="text-sm text-gray-600">+5,386 families</span>
 				</div>
 
-				<h3 class="text-lg font-semibold text-gray-900 mb-4">Impact</h3>
-				<div class="space-y-3">
+				<h3 class="text-lg font-semibold text-gray-900 mb-4 animate-fade-in">Impact</h3>
+				<div class="space-y-3 animate-fade-in stagger-1">
 					<div class="flex justify-between items-center">
 						<span class="text-sm text-gray-600">Referrals (4)</span>
 						<span class="text-sm text-gray-500">60%</span>
 					</div>
-					<div class="w-full bg-gray-200 rounded-full h-2">
-						<div class="bg-orange-500 h-2 rounded-full" style="width: 60%"></div>
+					<div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+						<div class="bg-orange-500 h-2 rounded-full animate-fade-in-right transition-all duration-1000 ease-out" style="width: 60%"></div>
 					</div>
 					<div class="flex justify-between items-center">
 						<span class="text-sm text-gray-600">In progress (4)</span>
 						<span class="text-sm text-gray-500">35%</span>
 					</div>
-					<div class="w-full bg-gray-200 rounded-full h-2">
-						<div class="bg-yellow-500 h-2 rounded-full" style="width: 35%"></div>
+					<div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+						<div class="bg-yellow-500 h-2 rounded-full animate-fade-in-right transition-all duration-1000 ease-out stagger-1" style="width: 35%"></div>
 					</div>
 					<div class="flex justify-between items-center">
 						<span class="text-sm text-gray-600">Completed (8)</span>
-						<span class="text-sm text-gray-500">88%</span>
 					</div>
-					<div class="w-full bg-gray-200 rounded-full h-2">
-						<div class="bg-green-500 h-2 rounded-full" style="width: 88%"></div>
+					<div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+						<div class="bg-green-500 h-2 rounded-full animate-fade-in-right transition-all duration-1000 ease-out stagger-2" style="width: 88%"></div>
 					</div>
 				</div>
 			</div>
@@ -209,17 +213,17 @@
 </section>
 
 <!-- Mobile App Section -->
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-gray-50 fade-in-on-scroll">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<!-- Left Side - Mobile Mockup -->
-			<div class="flex justify-center">
-				<div class="relative">
+			<div class="flex justify-center animate-fade-in-left">
+				<div class="relative animate-float">
 					<!-- iPhone Mockup -->
-					<div class="w-64 h-[500px] bg-black rounded-[3rem] p-2 shadow-2xl">
+					<div class="w-64 h-[500px] bg-black rounded-[3rem] p-2 shadow-2xl hover-lift">
 						<div class="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
 							<!-- Status Bar -->
-							<div class="bg-gray-100 p-4 flex justify-between items-center">
+							<div class="bg-gray-100 p-4 flex justify-between items-center animate-fade-in stagger-1">
 								<span class="text-sm font-medium">9:41</span>
 								<div class="flex space-x-1">
 									<div class="w-4 h-2 bg-gray-400 rounded-sm"></div>
@@ -229,15 +233,15 @@
 							
 							<!-- App Content -->
 							<div class="p-6">
-								<div class="flex justify-between items-center mb-6">
+								<div class="flex justify-between items-center mb-6 animate-fade-in stagger-2">
 									<h3 class="text-lg font-semibold">Progress</h3>
 									<span class="text-sm text-gray-500">This Week</span>
 								</div>
 								
 								<div class="space-y-4">
-									<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+									<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg animate-fade-in stagger-3 hover-scale">
 										<div class="flex items-center">
-											<div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+											<div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3 animate-pulse-glow">
 												<span class="text-white text-xs">✓</span>
 											</div>
 											<span class="text-sm">To do (4)</span>
@@ -245,9 +249,9 @@
 										<span class="text-sm text-gray-500">100%</span>
 									</div>
 									
-									<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+									<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg animate-fade-in stagger-4 hover-scale">
 										<div class="flex items-center">
-											<div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mr-3">
+											<div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mr-3 animate-pulse-glow">
 												<span class="text-white text-xs">⟳</span>
 											</div>
 											<span class="text-sm">In progress (4)</span>
@@ -305,18 +309,18 @@
 </section>
 
 <!-- Testimonials Section -->
-<section class="py-20 bg-white md:rounded-t-2xl shadow">
+<section class="py-20 bg-white md:rounded-t-2xl shadow fade-in-on-scroll">
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<div class="relative">
 			<!-- Testimonial Content -->
 			<div class="min-h-[200px] flex items-center justify-center">
-				<div class="fade-in">
-					<blockquote class="text-2xl md:text-3xl font-medium text-gray-900 mb-8">
+				<div class="fade-in animate-scale-in">
+					<blockquote class="text-2xl md:text-3xl font-medium text-gray-900 mb-8 animate-fade-in">
 						"{testimonials[currentTestimonial].text}"
 					</blockquote>
 					
-					<div class="flex justify-center items-center">
-						<img src={testimonials[currentTestimonial].avatar} alt={testimonials[currentTestimonial].author} class="w-12 h-12 rounded-full mr-4">
+					<div class="flex justify-center items-center animate-fade-in stagger-1">
+						<img src={testimonials[currentTestimonial].avatar} alt={testimonials[currentTestimonial].author} class="w-12 h-12 rounded-full mr-4 hover-scale transition-all duration-300">
 						<div class="text-left">
 							<div class="font-semibold text-gray-900">{testimonials[currentTestimonial].author}</div>
 							<div class="text-gray-600 text-sm">{testimonials[currentTestimonial].role}</div>
@@ -327,8 +331,9 @@
 
 			<!-- Navigation Arrows -->
 			<button 
+				aria-label="Previous testimonial"
 				on:click={prevTestimonial}
-				class="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+				class="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 hover-scale transition-all duration-300"
 			>
 				<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>

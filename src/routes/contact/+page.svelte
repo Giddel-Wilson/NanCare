@@ -1,22 +1,24 @@
 <!-- Contact Us Page -->
-<section class="bg-gray-50 py-20">
+<section class="bg-gray-50 py-20 fade-in-on-scroll">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-16">
-			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-			<p class="text-lg text-gray-600 max-w-3xl mx-auto">
+			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
+				<span class="gradient-text">Contact Us</span>
+			</h1>
+			<p class="text-lg text-gray-600 max-w-3xl mx-auto animate-fade-in stagger-1">
 				Ready to get the elderly care support you need? Our team is here to help families, organizations, and individuals navigate the path to better senior care.
 			</p>
 		</div>
 
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 			<!-- Contact Form -->
-			<div class="bg-white rounded-2xl p-8 shadow-lg">
-				<h2 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+			<div class="bg-white rounded-2xl p-8 shadow-lg hover-lift animate-fade-in-left">
+				<h2 class="text-2xl font-bold text-gray-900 mb-6 animate-fade-in">Send Us a Message</h2>
 				<form class="space-y-6">
 					<!-- Contact Type -->
-					<div>
+					<div class="animate-fade-in stagger-1">
 						<label class="block text-sm font-medium text-gray-700 mb-2">I am a:</label>
-						<select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+						<select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 hover-glow">
 							<option value="">Select your role</option>
 							<option value="family-member">Family Member/Guardian</option>
 							<option value="senior">Senior Seeking Support</option>
@@ -166,14 +168,14 @@
 			</div>
 
 			<!-- Contact Information -->
-			<div class="space-y-8">
+			<div class="space-y-8 animate-fade-in-right">
 				<!-- Quick Contact -->
-				<div class="bg-white rounded-2xl p-8 shadow-lg">
-					<h2 class="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+				<div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+					<h2 class="text-2xl font-bold text-gray-900 mb-6 animate-fade-in">Get In Touch</h2>
 					<div class="space-y-6">
 						<!-- Phone -->
-						<div class="flex items-start">
-							<div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+						<div class="flex items-start animate-fade-in stagger-1 hover-scale transition-all duration-300">
+							<div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 animate-pulse-glow">
 								<svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
 								</svg>
@@ -181,7 +183,7 @@
 							<div>
 								<h3 class="text-lg font-semibold text-gray-900">Call Us</h3>
 								<p class="text-gray-600 mb-2">Available 24/7 for urgent support</p>
-								<p class="text-orange-500 font-medium text-lg">+234-801-NAN-CARE (626-2273)</p>
+								<p class="text-orange-500 font-medium text-lg gradient-text">+234-801-NAN-CARE (626-2273)</p>
 								<p class="text-sm text-gray-500">Toll-free nationwide</p>
 							</div>
 						</div>
@@ -299,7 +301,7 @@
 </section>
 
 <!-- Final CTA -->
-<section class="py-20 bg-orange-500 rounded-2xl shadow">
+<section class="py-20 bg-orange-500 md:rounded-2xl shadow">
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 		<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
 		<p class="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
@@ -316,34 +318,3 @@
 		</div>
 	</div>
 </section>
-
-<script lang="ts">
-	let openFAQ: number | null = null;
-
-	function toggleFAQ(index: number) {
-		openFAQ = openFAQ === index ? null : index;
-	}
-
-	const faqs = [
-		{
-			question: "How quickly can you help us?",
-			answer: "We respond to all inquiries within 24 hours. For urgent situations, we have same-day consultation available. Emergency support is available 24/7 through our hotline."
-		},
-		{
-			question: "Do you charge for your services?",
-			answer: "Our initial consultation and assessment are always free. We offer sliding scale fees based on family income, and many of our services are covered by insurance or community funding. We'll never let cost be a barrier to getting the help you need."
-		},
-		{
-			question: "What areas do you serve?",
-			answer: "We provide services nationwide with regional offices in major metropolitan areas. We also offer virtual consultations and support for families in rural or underserved areas."
-		},
-		{
-			question: "Can you help if we already have care arrangements?",
-			answer: "Absolutely! We can assess your current situation, help optimize existing care plans, provide additional support services, and ensure you're getting the best possible care for your loved one."
-		},
-		{
-			question: "How do you work with other organizations?",
-			answer: "We collaborate closely with healthcare systems, NGOs, government agencies, and community organizations. We can integrate with existing services or help establish new partnerships to better serve elderly populations."
-		}
-	];
-</script>
