@@ -1,3 +1,46 @@
+<script>
+	let openFAQ = -1;
+
+	function toggleFAQ(index) {
+		openFAQ = openFAQ === index ? -1 : index;
+	}
+
+	const faqs = [
+		{
+			question: "What services does NanCare provide for elderly care?",
+			answer: "NanCare offers comprehensive elderly support services including family counseling, wellness advocacy, resource coordination, community integration programs, education and training for caregivers, and advocacy for elderly rights. We focus on holistic support rather than medical care."
+		},
+		{
+			question: "Do you provide direct medical care or nursing services?",
+			answer: "No, NanCare is not a medical clinic or nursing agency. We are a welfare and support organization that helps families navigate elderly care options, connects them with appropriate medical resources, and provides emotional and practical support throughout the care journey."
+		},
+		{
+			question: "What areas of Nigeria do you serve?",
+			answer: "We currently serve multiple regions across Nigeria including Lagos State, FCT Abuja, Rivers State, Imo State, Anambra State, Ogun State, Oyo State, Kano State, and Kaduna State. We're continuously expanding our reach to serve more communities."
+		},
+		{
+			question: "How much do your services cost?",
+			answer: "Our service fees vary depending on the type and level of support needed. We offer flexible payment options and work with families to find solutions that fit their budget. Contact us for a personalized consultation and pricing information."
+		},
+		{
+			question: "Can you help if we're not ready to make care decisions yet?",
+			answer: "Absolutely! We provide educational resources, counseling, and guidance to help families understand their options and make informed decisions when they're ready. There's no pressure to commit to any specific services."
+		},
+		{
+			question: "Do you work with other healthcare providers?",
+			answer: "Yes, we collaborate with hospitals, clinics, NGOs, and government agencies to ensure comprehensive care coordination. We can help connect families with appropriate medical professionals and specialists when needed."
+		},
+		{
+			question: "What if we need help outside of business hours?",
+			answer: "Our main support lines operate during business hours, but we have a 24/7 emergency support line for crisis situations. For non-urgent matters, you can leave a message or send an email, and we'll respond within 24 hours."
+		},
+		{
+			question: "How do I know if your services are right for my family?",
+			answer: "The best way to find out is to contact us for a free consultation. We'll discuss your specific situation, needs, and concerns to determine how we can best support your family's elderly care journey."
+		}
+	];
+</script>
+
 <!-- Contact Us Page -->
 <section class="bg-gray-50 py-20 fade-in-on-scroll">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
