@@ -1,4 +1,5 @@
 <script lang="ts">
+	// NanCare Elderly Support Hub - Updated July 3, 2025
 	// Sample data for user avatars and testimonials
 	const userAvatars = [
 		'https://i.pinimg.com/736x/5e/a6/02/5ea6025de1ddf0efc423dbfde2dc1ff3.jpg',

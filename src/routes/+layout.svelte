@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { initScrollAnimations } from '$lib/animations';
+	// Updated July 3, 2025 - NanCare Elderly Support Hub
 
 	let { children } = $props();
 	let mobileMenuOpen = $state(false);
